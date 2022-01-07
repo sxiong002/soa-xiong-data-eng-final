@@ -48,7 +48,7 @@
       | ORDER_AMT                 | FLOAT          |
 
      ## Output Data Specs
-    - Your pipeline should output the following tables under a dataset with the following naming convention ```york-cdf-start.final-[first-name]-[last-name]```
+    - Your pipeline should output the following tables under a dataset with the following naming convention ```york-cdf-start.final_[first-name]_[last-name]```
 
       ### cust_tier_code-sku-total_no_of_product_views
 
