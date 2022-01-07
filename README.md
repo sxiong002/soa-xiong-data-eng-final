@@ -115,6 +115,3 @@
    - Install required python packages inside your new venv from your ```requirements.txt``` file
    - Set your ```GOOGLE_APPLICATION_CREDENTIALS``` environment variable to ```/var/dataflow/york-cdf-start-b0964900c176.json```
    - Start your pipeline
-
-README.md
-Displaying README.md.
