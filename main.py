@@ -59,20 +59,16 @@ def function():
                   'FROM `york-cdf-start.final_input_data.customers` as c '
                   'INNER JOIN `york-cdf-start.final_input_data.product_views` as p '
                   'ON c.customer_id = p.customer_id '
-                  'INNER JOIN `york-cdf-start.final_input_data.orders` as o '
-                  'ON p.customer_id = o.customer_id '
                   'GROUP BY cust_tier_code, sku '
                   'ORDER BY total_no_of_product_views DESC ',
             use_standard_sql=True
         )
 
         data2 = pipeline | 'Read data2 from BigQuery' >> beam.io.ReadFromBigQuery(
-            query='SELECT c.CUST_TIER_CODE AS cust_tier_code, p.sku AS sku, ROUND(SUM(o.ORDER_AMT), 2) AS total_sales_amount '
+            query='SELECT c.CUST_TIER_CODE AS cust_tier_code, o.sku AS sku, ROUND(SUM(o.ORDER_AMT), 2) AS total_sales_amount '
                   'FROM `york-cdf-start.final_input_data.customers` as c '
-                  'INNER JOIN `york-cdf-start.final_input_data.product_views` as p '
-                  'ON c.customer_id = p.customer_id '
                   'INNER JOIN `york-cdf-start.final_input_data.orders` as o '
-                  'ON p.customer_id = o.customer_id '
+                  'ON c.customer_id = o.customer_id '
                   'GROUP BY cust_tier_code, sku '
                   'ORDER BY total_sales_amount DESC',
             use_standard_sql=True
