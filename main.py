@@ -55,7 +55,7 @@ def function():
 
     with beam.Pipeline(options=beam_options) as pipeline:
         data1 = pipeline | 'Read data1 from BigQuery' >> beam.io.ReadFromBigQuery(
-            query='SELECT c.CUST_TIER_CODE AS cust_tier_code, p.sku AS sku, COUNT(p.EVENT_TM) AS total_no_of_product_views '
+            query='SELECT c.CUST_TIER_CODE AS cust_tier_code, p.sku AS sku, COUNT(*) AS total_no_of_product_views '
                   'FROM `york-cdf-start.final_input_data.customers` as c '
                   'INNER JOIN `york-cdf-start.final_input_data.product_views` as p '
                   'ON c.customer_id = p.customer_id '
